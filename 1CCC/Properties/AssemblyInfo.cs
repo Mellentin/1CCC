@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("1CCC")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("1C Cache Cleaner - программа для очистки кэша 1С")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Дмитрий Пуршев")]
 [assembly: AssemblyProduct("1CCC")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
