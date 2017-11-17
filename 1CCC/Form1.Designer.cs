@@ -131,11 +131,11 @@
             // metroLabel9
             // 
             this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel9.Location = new System.Drawing.Point(3, 173);
+            this.metroLabel9.Location = new System.Drawing.Point(3, 150);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(389, 25);
+            this.metroLabel9.Size = new System.Drawing.Size(389, 48);
             this.metroLabel9.TabIndex = 24;
-            this.metroLabel9.Text = "Резервное копирование начато";
+            this.metroLabel9.Text = "Пожалуйста подождите...\r\nИдет резервное копирование";
             this.metroLabel9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.metroLabel9.UseStyleColors = true;
             this.metroLabel9.Visible = false;
@@ -430,6 +430,10 @@
             // 
             this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.Description = "Выберите папку, куда Вы хотите сохранить резервную копию информационной базы 1С";
             // 
             // Form1
             // 

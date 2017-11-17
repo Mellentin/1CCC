@@ -490,12 +490,20 @@ namespace _1CCC
                 long dirSize = SafeEnumerateFiles(path, "*.*", SearchOption.AllDirectories).Sum(n => new FileInfo(n).Length);
                 metroLabel9.Visible = true;
                 metroProgressSpinner3.Visible = true;
-                folderBrowserDialog1.ShowDialog();
 
-                if (folderBrowserDialog1.SelectedPath != "" || folderBrowserDialog1.SelectedPath != null)
+                DialogResult dr = folderBrowserDialog1.ShowDialog();
+
+                if (dr == DialogResult.OK && folderBrowserDialog1.SelectedPath != "")
                 {
                     rcp = folderBrowserDialog1.SelectedPath;
+                    metroLabel9.Visible = true;
+                    metroProgressSpinner3.Visible = true;
                     backgroundWorker2.RunWorkerAsync();
+                }
+                else
+                {
+                    metroLabel9.Visible = false;
+                    metroProgressSpinner3.Visible = false;
                 }
             }
         }
@@ -505,6 +513,9 @@ namespace _1CCC
             string path = bases[selectedbase, 1];
 
             Copy(path, rcp);
+
+            if (File.Exists(rcp + "/DoNotCopy.txt"))
+                File.Delete(rcp + "/DoNotCopy.txt");
         }
 
         private void Copy(string begin_dir, string end_dir)
@@ -585,7 +596,7 @@ namespace _1CCC
 
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Резервное копирование завершено!");
+            MessageBox.Show("Резервное копирование завершено!", "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Information);
             metroLabel9.Visible = false;
             metroProgressSpinner3.Visible = false;
         }
