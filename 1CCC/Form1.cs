@@ -28,6 +28,9 @@ namespace _1CCC
         }
 
         private List<string> paths = new List<string>();
+        string[,] bases = new string[100, 2];
+        string rcp = "";
+        int selectedbase = 0;
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
@@ -298,8 +301,9 @@ namespace _1CCC
         private void metroButton6_Click(object sender, EventArgs e)
         {
             RegistryKey key = null;
-            List<string[]> app = new List<string[]>();
-            //string[][] app;
+            int lastVer = 0;
+            string lastVerPath = "";
+            string[,] app = new string[100,2];
 
             switch (GetOSBit())
             {
@@ -314,18 +318,46 @@ namespace _1CCC
 
             foreach (String keyName in key.GetSubKeyNames())
             {
+                int i = 0;
                 RegistryKey subkey = key.OpenSubKey(keyName);
                 if (subkey.GetValue("DisplayName") != null)
                 {
                     if (subkey.GetValue("DisplayName").ToString().Contains("1C:Предприятие") || subkey.GetValue("DisplayName").ToString().Contains("1С:Предприятие"))
                     {
-                        Process.Start(subkey.GetValue("InstallLocation").ToString() + @"bin\chdbfl.exe");
+                        app[i, 0] = subkey.GetValue("DisplayVersion").ToString().Replace(".", string.Empty);
+                        app[i, 1] = subkey.GetValue("InstallLocation").ToString();
+                        i++;
                     }
+                }
+            }
+
+            for (int i = 0; i < app.Length /2; i++)
+            {
+                if (app[i, 0] != null)
+                {
+                    if (Convert.ToInt32(app[i, 0]) > lastVer)
+                    {
+                        lastVer = Convert.ToInt32(app[i, 0]);
+                        lastVerPath = app[i, 1];
+                    }
+                }
+            }
+
+            if (lastVerPath != null || lastVerPath != "")
+            {
+                try
+                {
+                    Process.Start(lastVerPath + "/bin/chdbfl.exe");
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла катастрофическая ошибка. Обратитесь к системному администратору.\nРасшифровка:\n" + ex, "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void SetStyle()
         {
             this.StyleManager = metroStyleManager1;
             metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -336,6 +368,9 @@ namespace _1CCC
             metroLabel4.StyleManager = metroStyleManager1;
             metroLabel5.StyleManager = metroStyleManager1;
             metroLabel6.StyleManager = metroStyleManager1;
+            metroLabel7.StyleManager = metroStyleManager1;
+            metroLabel8.StyleManager = metroStyleManager1;
+            metroLabel9.StyleManager = metroStyleManager1;
             metroButton1.StyleManager = metroStyleManager1;
             metroButton2.StyleManager = metroStyleManager1;
             metroButton3.StyleManager = metroStyleManager1;
@@ -346,12 +381,21 @@ namespace _1CCC
             metroButton8.StyleManager = metroStyleManager1;
             metroButton9.StyleManager = metroStyleManager1;
             metroProgressSpinner1.StyleManager = metroStyleManager1;
+            metroProgressSpinner2.StyleManager = metroStyleManager1;
+            metroProgressSpinner3.StyleManager = metroStyleManager1;
             metroTabControl1.StyleManager = metroStyleManager1;
+            metroComboBox1.StyleManager = metroStyleManager1;
             metroTabPage1.StyleManager = metroStyleManager1;
             metroTabPage2.StyleManager = metroStyleManager1;
             metroTabPage3.StyleManager = metroStyleManager1;
             pictureBox1.BackColor = Color.FromArgb(17, 17, 17);
-            metroTabPage1.Select();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            SetStyle();
+
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void metroButton7_Click(object sender, EventArgs e)
@@ -367,6 +411,174 @@ namespace _1CCC
         private void metroButton9_Click(object sender, EventArgs e)
         {
             Process.Start("https://its.1c.ru");
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            metroProgressSpinner2.Invoke(new Action(() => metroProgressSpinner2.Visible = true));
+            metroLabel8.Invoke(new Action(() => metroLabel8.Visible = true));
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/1C/1CEStart/ibases.v8i";
+
+            try
+            {
+                StreamReader rdr = new StreamReader(path);
+                int i = 0;
+
+                while (!rdr.EndOfStream)
+                {
+                    string st = rdr.ReadLine();
+
+                    if (st.Contains("["))
+                    {
+                        st = st.Replace("[", string.Empty);
+                        st = st.Replace("]", string.Empty);
+
+                        bases[i, 0] = st;
+
+                        st = rdr.ReadLine();
+
+                        st = st.Replace("Connect=File=", string.Empty);
+                        st = st.Replace("\"", string.Empty);
+                        st = st.Replace(";", string.Empty);
+
+                        bases[i, 1] = st;
+
+                        i++;
+                    }
+                }
+
+                for (int j = 0; j < bases.Length /2 -1; j++)
+                {
+                    if (bases[j, 0] != null)
+                    {
+                        metroComboBox1.Invoke(new Action(() => metroComboBox1.Items.Add(bases[j, 0])));
+                    }
+                }
+
+                metroProgressSpinner2.Invoke(new Action(() => metroProgressSpinner2.Spinning = false));
+                metroLabel8.Invoke(new Action(() => metroLabel8.Text = "Данные успешно обновлены"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка. Обратитесь к системному администратору.\nРасшифровка:\n" + ex, "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (metroComboBox1.Text != "" || metroComboBox1.Text != null)
+            {
+                metroButton10.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("нет");
+            }
+            selectedbase = metroComboBox1.SelectedIndex;
+        }
+
+        private void metroButton10_Click(object sender, EventArgs e)
+        {
+            string path = bases[metroComboBox1.SelectedIndex, 1];
+            
+            if (path != "")
+            {
+                long dirSize = SafeEnumerateFiles(path, "*.*", SearchOption.AllDirectories).Sum(n => new FileInfo(n).Length);
+                metroLabel9.Visible = true;
+                metroProgressSpinner3.Visible = true;
+                folderBrowserDialog1.ShowDialog();
+
+                if (folderBrowserDialog1.SelectedPath != "" || folderBrowserDialog1.SelectedPath != null)
+                {
+                    rcp = folderBrowserDialog1.SelectedPath;
+                    backgroundWorker2.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string path = bases[selectedbase, 1];
+
+            Copy(path, rcp);
+            MessageBox.Show("Законечно");
+        }
+
+        private void Copy(string begin_dir, string end_dir)
+        {
+            //Берём нашу исходную папку
+            DirectoryInfo dir_inf = new DirectoryInfo(begin_dir);
+            //Перебираем все внутренние папки
+            foreach (DirectoryInfo dir in dir_inf.GetDirectories())
+            {
+                //Проверяем - если директории не существует, то создаём;
+                if (Directory.Exists(end_dir + "\\" + dir.Name) != true)
+                {
+                    Directory.CreateDirectory(end_dir + "\\" + dir.Name);
+                }
+
+                //Рекурсия (перебираем вложенные папки и делаем для них то-же самое).
+                Copy(dir.FullName, end_dir + "\\" + dir.Name);
+            }
+
+            //Перебираем файлики в папке источнике.
+            foreach (string file in Directory.GetFiles(begin_dir))
+            {
+                //Определяем (отделяем) имя файла с расширением - без пути (но с слешем "\").
+                string filik = file.Substring(file.LastIndexOf('\\'), file.Length - file.LastIndexOf('\\'));
+                //Копируем файлик с перезаписью из источника в приёмник.
+                File.Copy(file, end_dir + "\\" + filik, true);
+            }
+        }
+
+        private static IEnumerable<string> SafeEnumerateFiles(string path, string searchPattern, SearchOption searchOption)
+        {
+            Stack<string> dirs = new Stack<string>();
+            dirs.Push(path);
+
+            while (dirs.Count > 0)
+            {
+                string currentDirPath = dirs.Pop();
+                if (searchOption == SearchOption.AllDirectories)
+                {
+                    try
+                    {
+                        string[] subDirs = Directory.GetDirectories(currentDirPath);
+                        foreach (string subDirPath in subDirs)
+                        {
+                            dirs.Push(subDirPath);
+                        }
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        continue;
+                    }
+                    catch (DirectoryNotFoundException)
+                    {
+                        continue;
+                    }
+                }
+
+                string[] files = null;
+                try
+                {
+                    files = Directory.GetFiles(currentDirPath, searchPattern);
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    continue;
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    continue;
+                }
+
+                foreach (string filePath in files)
+                {
+                    yield return filePath;
+                }
+            }
         }
     }
 }

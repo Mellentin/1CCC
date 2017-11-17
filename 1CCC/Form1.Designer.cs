@@ -41,17 +41,27 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroButton6 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton9 = new MetroFramework.Controls.MetroButton();
+            this.metroButton8 = new MetroFramework.Controls.MetroButton();
+            this.metroButton7 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton7 = new MetroFramework.Controls.MetroButton();
-            this.metroButton8 = new MetroFramework.Controls.MetroButton();
-            this.metroButton9 = new MetroFramework.Controls.MetroButton();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroProgressSpinner2 = new MetroFramework.Controls.MetroProgressSpinner();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.metroButton10 = new MetroFramework.Controls.MetroButton();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroProgressSpinner3 = new MetroFramework.Controls.MetroProgressSpinner();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.metroTabControl1.SuspendLayout();
@@ -76,12 +86,12 @@
             // 
             // metroTabControl1
             // 
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
+            this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(23, 148);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(408, 460);
             this.metroTabControl1.TabIndex = 4;
             this.metroTabControl1.UseSelectable = true;
@@ -182,6 +192,11 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.metroProgressSpinner3);
+            this.metroTabPage2.Controls.Add(this.metroLabel9);
+            this.metroTabPage2.Controls.Add(this.metroButton10);
+            this.metroTabPage2.Controls.Add(this.metroLabel7);
+            this.metroTabPage2.Controls.Add(this.metroComboBox1);
             this.metroTabPage2.Controls.Add(this.metroLabel4);
             this.metroTabPage2.Controls.Add(this.metroButton6);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
@@ -196,10 +211,32 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
+            // metroLabel7
+            // 
+            this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel7.Location = new System.Drawing.Point(3, 21);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(389, 25);
+            this.metroLabel7.TabIndex = 21;
+            this.metroLabel7.Text = "Выберите информационную базу";
+            this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroLabel7.UseStyleColors = true;
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(3, 49);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(389, 29);
+            this.metroComboBox1.TabIndex = 20;
+            this.metroComboBox1.UseSelectable = true;
+            this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
+            // 
             // metroLabel4
             // 
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel4.Location = new System.Drawing.Point(0, 234);
+            this.metroLabel4.Location = new System.Drawing.Point(-4, 348);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(389, 25);
             this.metroLabel4.TabIndex = 19;
@@ -209,7 +246,7 @@
             // 
             // metroButton6
             // 
-            this.metroButton6.Location = new System.Drawing.Point(0, 38);
+            this.metroButton6.Location = new System.Drawing.Point(3, 285);
             this.metroButton6.Name = "metroButton6";
             this.metroButton6.Size = new System.Drawing.Size(389, 46);
             this.metroButton6.TabIndex = 12;
@@ -240,6 +277,61 @@
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
+            // metroLabel6
+            // 
+            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel6.Location = new System.Drawing.Point(0, 11);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(400, 25);
+            this.metroLabel6.TabIndex = 24;
+            this.metroLabel6.Text = "Справка";
+            this.metroLabel6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroLabel6.UseStyleColors = true;
+            // 
+            // metroButton9
+            // 
+            this.metroButton9.Location = new System.Drawing.Point(3, 315);
+            this.metroButton9.Name = "metroButton9";
+            this.metroButton9.Size = new System.Drawing.Size(389, 32);
+            this.metroButton9.TabIndex = 23;
+            this.metroButton9.Text = "Информационно-технологическое сопровождение";
+            this.metroButton9.UseSelectable = true;
+            this.metroButton9.UseStyleColors = true;
+            this.metroButton9.Click += new System.EventHandler(this.metroButton9_Click);
+            // 
+            // metroButton8
+            // 
+            this.metroButton8.Location = new System.Drawing.Point(3, 201);
+            this.metroButton8.Name = "metroButton8";
+            this.metroButton8.Size = new System.Drawing.Size(389, 32);
+            this.metroButton8.TabIndex = 22;
+            this.metroButton8.Text = "1С: Личный кабинет";
+            this.metroButton8.UseSelectable = true;
+            this.metroButton8.UseStyleColors = true;
+            this.metroButton8.Click += new System.EventHandler(this.metroButton8_Click);
+            // 
+            // metroButton7
+            // 
+            this.metroButton7.Location = new System.Drawing.Point(3, 261);
+            this.metroButton7.Name = "metroButton7";
+            this.metroButton7.Size = new System.Drawing.Size(389, 32);
+            this.metroButton7.TabIndex = 21;
+            this.metroButton7.Text = "1C: Обновление программ";
+            this.metroButton7.UseSelectable = true;
+            this.metroButton7.UseStyleColors = true;
+            this.metroButton7.Click += new System.EventHandler(this.metroButton7_Click);
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel5.Location = new System.Drawing.Point(0, 160);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(400, 25);
+            this.metroLabel5.TabIndex = 20;
+            this.metroLabel5.Text = "Ссылки";
+            this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroLabel5.UseStyleColors = true;
+            // 
             // metroButton3
             // 
             this.metroButton3.Location = new System.Drawing.Point(3, 53);
@@ -264,7 +356,7 @@
             // 
             // metroButton4
             // 
-            this.metroButton4.Location = new System.Drawing.Point(23, 634);
+            this.metroButton4.Location = new System.Drawing.Point(23, 614);
             this.metroButton4.Name = "metroButton4";
             this.metroButton4.Size = new System.Drawing.Size(408, 32);
             this.metroButton4.TabIndex = 18;
@@ -273,66 +365,78 @@
             this.metroButton4.UseStyleColors = true;
             this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
             // 
-            // metroLabel5
+            // metroProgressSpinner2
             // 
-            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel5.Location = new System.Drawing.Point(0, 160);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(400, 25);
-            this.metroLabel5.TabIndex = 20;
-            this.metroLabel5.Text = "Ссылки";
-            this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroLabel5.UseStyleColors = true;
+            this.metroProgressSpinner2.Location = new System.Drawing.Point(23, 652);
+            this.metroProgressSpinner2.Maximum = 100;
+            this.metroProgressSpinner2.Name = "metroProgressSpinner2";
+            this.metroProgressSpinner2.Size = new System.Drawing.Size(29, 30);
+            this.metroProgressSpinner2.TabIndex = 19;
+            this.metroProgressSpinner2.UseSelectable = true;
+            this.metroProgressSpinner2.Visible = false;
             // 
-            // metroButton7
+            // metroLabel8
             // 
-            this.metroButton7.Location = new System.Drawing.Point(3, 261);
-            this.metroButton7.Name = "metroButton7";
-            this.metroButton7.Size = new System.Drawing.Size(389, 32);
-            this.metroButton7.TabIndex = 21;
-            this.metroButton7.Text = "1C: Обновление программ";
-            this.metroButton7.UseSelectable = true;
-            this.metroButton7.UseStyleColors = true;
-            this.metroButton7.Click += new System.EventHandler(this.metroButton7_Click);
+            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel8.Location = new System.Drawing.Point(58, 652);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(354, 17);
+            this.metroLabel8.TabIndex = 22;
+            this.metroLabel8.Text = "Идёт обновление данных";
+            this.metroLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroLabel8.UseStyleColors = true;
+            this.metroLabel8.Visible = false;
             // 
-            // metroButton8
+            // backgroundWorker1
             // 
-            this.metroButton8.Location = new System.Drawing.Point(3, 201);
-            this.metroButton8.Name = "metroButton8";
-            this.metroButton8.Size = new System.Drawing.Size(389, 32);
-            this.metroButton8.TabIndex = 22;
-            this.metroButton8.Text = "1С: Личный кабинет";
-            this.metroButton8.UseSelectable = true;
-            this.metroButton8.UseStyleColors = true;
-            this.metroButton8.Click += new System.EventHandler(this.metroButton8_Click);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // metroButton9
+            // metroButton10
             // 
-            this.metroButton9.Location = new System.Drawing.Point(3, 315);
-            this.metroButton9.Name = "metroButton9";
-            this.metroButton9.Size = new System.Drawing.Size(389, 32);
-            this.metroButton9.TabIndex = 23;
-            this.metroButton9.Text = "Информационно-технологическое сопровождение";
-            this.metroButton9.UseSelectable = true;
-            this.metroButton9.UseStyleColors = true;
-            this.metroButton9.Click += new System.EventHandler(this.metroButton9_Click);
+            this.metroButton10.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.metroButton10.Enabled = false;
+            this.metroButton10.Location = new System.Drawing.Point(3, 101);
+            this.metroButton10.Name = "metroButton10";
+            this.metroButton10.Size = new System.Drawing.Size(389, 46);
+            this.metroButton10.TabIndex = 22;
+            this.metroButton10.Text = "Сделать резервную копию программы";
+            this.metroButton10.UseSelectable = true;
+            this.metroButton10.UseStyleColors = true;
+            this.metroButton10.Click += new System.EventHandler(this.metroButton10_Click);
             // 
-            // metroLabel6
+            // backgroundWorker2
             // 
-            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel6.Location = new System.Drawing.Point(0, 11);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(400, 25);
-            this.metroLabel6.TabIndex = 24;
-            this.metroLabel6.Text = "Справка";
-            this.metroLabel6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroLabel6.UseStyleColors = true;
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel9.Location = new System.Drawing.Point(3, 173);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(389, 25);
+            this.metroLabel9.TabIndex = 24;
+            this.metroLabel9.Text = "Идет резервное копирование";
+            this.metroLabel9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroLabel9.UseStyleColors = true;
+            this.metroLabel9.Visible = false;
+            // 
+            // metroProgressSpinner3
+            // 
+            this.metroProgressSpinner3.Location = new System.Drawing.Point(175, 212);
+            this.metroProgressSpinner3.Maximum = 100;
+            this.metroProgressSpinner3.Name = "metroProgressSpinner3";
+            this.metroProgressSpinner3.Size = new System.Drawing.Size(47, 46);
+            this.metroProgressSpinner3.TabIndex = 25;
+            this.metroProgressSpinner3.UseSelectable = true;
+            this.metroProgressSpinner3.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 689);
+            this.Controls.Add(this.metroLabel8);
+            this.Controls.Add(this.metroProgressSpinner2);
             this.Controls.Add(this.metroButton4);
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.pictureBox1);
@@ -377,6 +481,16 @@
         private MetroFramework.Controls.MetroButton metroButton8;
         private MetroFramework.Controls.MetroButton metroButton9;
         private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner2;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private MetroFramework.Controls.MetroButton metroButton10;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner3;
     }
 }
 
