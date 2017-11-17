@@ -380,6 +380,7 @@ namespace _1CCC
             metroButton7.StyleManager = metroStyleManager1;
             metroButton8.StyleManager = metroStyleManager1;
             metroButton9.StyleManager = metroStyleManager1;
+            metroButton10.StyleManager = metroStyleManager1;
             metroProgressSpinner1.StyleManager = metroStyleManager1;
             metroProgressSpinner2.StyleManager = metroStyleManager1;
             metroProgressSpinner3.StyleManager = metroStyleManager1;
@@ -458,6 +459,8 @@ namespace _1CCC
 
                 metroProgressSpinner2.Invoke(new Action(() => metroProgressSpinner2.Spinning = false));
                 metroLabel8.Invoke(new Action(() => metroLabel8.Text = "Данные успешно обновлены"));
+
+
             }
             catch (Exception ex)
             {
@@ -502,7 +505,6 @@ namespace _1CCC
             string path = bases[selectedbase, 1];
 
             Copy(path, rcp);
-            MessageBox.Show("Законечно");
         }
 
         private void Copy(string begin_dir, string end_dir)
@@ -579,6 +581,13 @@ namespace _1CCC
                     yield return filePath;
                 }
             }
+        }
+
+        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Резервное копирование завершено!");
+            metroLabel9.Visible = false;
+            metroProgressSpinner3.Visible = false;
         }
     }
 }
