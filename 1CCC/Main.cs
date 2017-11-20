@@ -20,9 +20,9 @@ using System.Runtime.InteropServices;
 
 namespace _1CCC
 {
-    public partial class Form1 : MetroForm
+    public partial class Main : MetroForm
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
