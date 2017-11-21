@@ -62,6 +62,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.metroButton11 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.metroTabControl1.SuspendLayout();
@@ -91,7 +92,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(23, 148);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(408, 460);
             this.metroTabControl1.TabIndex = 4;
             this.metroTabControl1.UseSelectable = true;
@@ -391,9 +392,9 @@
             // 
             // metroButton4
             // 
-            this.metroButton4.Location = new System.Drawing.Point(23, 614);
+            this.metroButton4.Location = new System.Drawing.Point(234, 614);
             this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(408, 32);
+            this.metroButton4.Size = new System.Drawing.Size(185, 32);
             this.metroButton4.TabIndex = 18;
             this.metroButton4.Text = "Выход";
             this.metroButton4.UseSelectable = true;
@@ -435,11 +436,23 @@
             // 
             this.folderBrowserDialog1.Description = "Выберите папку, куда Вы хотите сохранить резервную копию информационной базы 1С";
             // 
+            // metroButton11
+            // 
+            this.metroButton11.Location = new System.Drawing.Point(30, 614);
+            this.metroButton11.Name = "metroButton11";
+            this.metroButton11.Size = new System.Drawing.Size(189, 32);
+            this.metroButton11.TabIndex = 23;
+            this.metroButton11.Text = "Сменить тему";
+            this.metroButton11.UseSelectable = true;
+            this.metroButton11.UseStyleColors = true;
+            this.metroButton11.Click += new System.EventHandler(this.metroButton11_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 691);
+            this.Controls.Add(this.metroButton11);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroProgressSpinner2);
             this.Controls.Add(this.metroButton4);
@@ -497,6 +510,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner3;
+        private MetroFramework.Controls.MetroButton metroButton11;
     }
 }
 

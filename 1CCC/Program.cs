@@ -19,4 +19,10 @@ namespace _1CCC
             Application.Run(new Main());
         }
     }
+
+    static class GeneralTheme
+    {
+        public static int MainTheme { get; set; }
+        public static int AddTheme { get; set; }
+    }
 }

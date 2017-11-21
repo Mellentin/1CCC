@@ -27,6 +27,100 @@ namespace _1CCC
             InitializeComponent();
         }
 
+        private void DefineDesign()
+        {
+            switch (GeneralTheme.MainTheme)
+            {
+                case 0:
+                    metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
+                    this.Refresh();
+                    break;
+
+                case 1:
+                    metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Light;
+                    this.Refresh();
+                    break;
+            }
+
+            switch (GeneralTheme.AddTheme)
+            {
+                case 0:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Black;
+                    this.Refresh();
+                    break;
+
+                case 1:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.White;
+                    this.Refresh();
+                    break;
+
+                case 2:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Silver;
+                    this.Refresh();
+                    break;
+
+                case 3:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Blue;
+                    this.Refresh();
+                    break;
+
+                case 4:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Green;
+                    this.Refresh();
+                    break;
+
+                case 5:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Lime;
+                    this.Refresh();
+                    break;
+
+                case 6:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Teal;
+                    this.Refresh();
+                    break;
+
+                case 7:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Orange;
+                    this.Refresh();
+                    break;
+
+                case 8:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Brown;
+                    this.Refresh();
+                    break;
+
+                case 9:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Pink;
+                    this.Refresh();
+                    break;
+
+                case 10:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Magenta;
+                    this.Refresh();
+                    break;
+
+                case 11:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Purple;
+                    this.Refresh();
+                    break;
+
+                case 12:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Red;
+                    this.Refresh();
+                    break;
+
+                case 13:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Yellow;
+                    this.Refresh();
+                    break;
+
+                default:
+                    metroStyleManager1.Style = MetroFramework.MetroColorStyle.Blue;
+                    this.Refresh();
+                    break;
+            }
+        }
+
         private List<string> paths = new List<string>();
         string[,] bases = new string[100, 2];
         string rcp = "";
@@ -360,8 +454,6 @@ namespace _1CCC
         private void SetStyle()
         {
             this.StyleManager = metroStyleManager1;
-            metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            metroStyleManager1.Style = MetroFramework.MetroColorStyle.Yellow;
             metroLabel1.StyleManager = metroStyleManager1;
             metroLabel2.StyleManager = metroStyleManager1;
             metroLabel3.StyleManager = metroStyleManager1;
@@ -381,6 +473,7 @@ namespace _1CCC
             metroButton8.StyleManager = metroStyleManager1;
             metroButton9.StyleManager = metroStyleManager1;
             metroButton10.StyleManager = metroStyleManager1;
+            metroButton11.StyleManager = metroStyleManager1;
             metroProgressSpinner1.StyleManager = metroStyleManager1;
             metroProgressSpinner2.StyleManager = metroStyleManager1;
             metroProgressSpinner3.StyleManager = metroStyleManager1;
@@ -389,12 +482,19 @@ namespace _1CCC
             metroTabPage1.StyleManager = metroStyleManager1;
             metroTabPage2.StyleManager = metroStyleManager1;
             metroTabPage3.StyleManager = metroStyleManager1;
-            pictureBox1.BackColor = Color.FromArgb(17, 17, 17);
+            pictureBox1.BackColor = Color.FromArgb(0);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (GeneralTheme.MainTheme == 0 && GeneralTheme.AddTheme == 0)
+            {
+                GeneralTheme.MainTheme = 0;
+                GeneralTheme.AddTheme = 7;
+            }
+
             SetStyle();
+            DefineDesign();
 
             backgroundWorker1.RunWorkerAsync();
         }
@@ -458,7 +558,7 @@ namespace _1CCC
                 }
 
                 metroProgressSpinner2.Invoke(new Action(() => metroProgressSpinner2.Spinning = false));
-                metroLabel8.Invoke(new Action(() => metroLabel8.Text = "Данные успешно обновлены"));
+                metroLabel8.Invoke(new Action(() => metroLabel8.Text = "Данные получены"));
 
 
             }
@@ -599,6 +699,14 @@ namespace _1CCC
             MessageBox.Show("Резервное копирование завершено!", "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Information);
             metroLabel9.Visible = false;
             metroProgressSpinner3.Visible = false;
+        }
+
+        private void metroButton11_Click(object sender, EventArgs e)
+        {
+            ChangeColor cc = new ChangeColor();
+            cc.ShowDialog();
+            DefineDesign();
+            this.Refresh();
         }
     }
 }

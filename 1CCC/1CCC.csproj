@@ -97,6 +97,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeColor.Designer.cs">
+      <DependentUpon>ChangeColor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="RC.Designer.cs">
       <DependentUpon>RC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChangeColor.resx">
+      <DependentUpon>ChangeColor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
