@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EB5743C0-A629-4EE9-808A-079238BF36C5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>_1CCC</RootNamespace>
-    <AssemblyName>1CCC</AssemblyName>
+    <RootNamespace>_1CSM</RootNamespace>
+    <AssemblyName>1CSM</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

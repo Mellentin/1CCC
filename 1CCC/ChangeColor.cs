@@ -25,6 +25,11 @@ namespace _1CCC
             metroLabel1.StyleManager = metroStyleManager1;
             metroLabel2.StyleManager = metroStyleManager1;
             metroButton1.StyleManager = metroStyleManager1;
+            metroRadioButton1.StyleManager = metroStyleManager1;
+            metroRadioButton2.StyleManager = metroStyleManager1;
+            metroRadioButton3.StyleManager = metroStyleManager1;
+            metroTile1.StyleManager = metroStyleManager1;
+            metroToggle1.StyleManager = metroStyleManager1;
             metroProgressSpinner1.StyleManager = metroStyleManager1;
         }
 
@@ -341,6 +346,9 @@ namespace _1CCC
                 GeneralTheme.MainTheme = 1;
                 GeneralTheme.AddTheme = 3;
             }
+
+            metroComboBox1.SelectedIndex = GeneralTheme.MainTheme;
+            metroComboBox2.SelectedIndex = GeneralTheme.AddTheme;
         }
 
         private void metroProgressSpinner1_Click(object sender, EventArgs e)

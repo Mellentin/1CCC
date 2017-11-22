@@ -77,18 +77,18 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_1CCC.Properties.Resources.Без_имени_1;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 51);
+            this.pictureBox1.Image = global::_1CSM.Properties.Resources.Без_имени_1;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 54);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(459, 91);
+            this.pictureBox1.Size = new System.Drawing.Size(459, 88);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // metroTabControl1
             // 
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
+            this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(23, 148);
             this.metroTabControl1.Name = "metroTabControl1";
@@ -462,7 +462,7 @@
             this.Name = "Main";
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.Text = "1C Cache Cleaner";
+            this.Text = "1C Service Manager";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.Form1_Load);

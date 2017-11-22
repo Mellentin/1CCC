@@ -2,20 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Management;
 using Microsoft.Win32;
-using System.Security.Permissions;
 using System.Runtime.InteropServices;
 
 namespace _1CCC
@@ -296,7 +290,7 @@ namespace _1CCC
                     err += "* " + item + "\n";
                 }
 
-                DialogResult dr = MessageBox.Show("В данный момент на компьютере запущены следующие процессы 1С:\n" + err + "Закрыть данные процессы? ВНИМАНИЕ! Сохраните все данные 1С (закройте документы, печатные формы и пр.), иначе возможна частитчная потеря данных!", "Запущенные программы 1С", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult dr = MessageBox.Show("В данный момент на компьютере запущены следующие процессы 1С:\n" + err + "Закрыть данные процессы? ВНИМАНИЕ! Сохраните все данные 1С (закройте документы, печатные формы и пр.), иначе возможна частитчная потеря данных!", "1C Service Manager", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
                 if (dr == DialogResult.Yes)
                 {
@@ -310,7 +304,7 @@ namespace _1CCC
                         }
                     }
 
-                    Thread.Sleep(100);
+                    Thread.Sleep(1000);
                     metroButton5.PerformClick();
                 }
                 else
@@ -355,7 +349,7 @@ namespace _1CCC
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Вы действительно хотите выйти из программы?", "1C Cache Cleaner", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult dr = MessageBox.Show("Вы действительно хотите выйти из программы?", "1C Service Manager", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
             {
                 Application.Exit();
@@ -369,7 +363,7 @@ namespace _1CCC
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Кэш или кеш (англ. cache, от фр. cacher — «прятать»; произносится [kæʃ] — «кэш») — промежуточный буфер с быстрым доступом, содержащий информацию, которая может быть запрошена с наибольшей вероятностью. Доступ к данным в кэше осуществляется быстрее, чем выборка исходных данных из более медленной памяти или удаленного источника, однако её объём существенно ограничен по сравнению с хранилищем исходных данных.", "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Кэш или кеш (англ. cache, от фр. cacher — «прятать»; произносится [kæʃ] — «кэш») — промежуточный буфер с быстрым доступом, содержащий информацию, которая может быть запрошена с наибольшей вероятностью. Доступ к данным в кэше осуществляется быстрее, чем выборка исходных данных из более медленной памяти или удаленного источника, однако её объём существенно ограничен по сравнению с хранилищем исходных данных.", "1C Service Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static int GetOSBit()
@@ -446,7 +440,7 @@ namespace _1CCC
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Произошла катастрофическая ошибка. Обратитесь к системному администратору.\nРасшифровка:\n" + ex, "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Произошла катастрофическая ошибка. Обратитесь к системному администратору.\nРасшифровка:\n" + ex, "1C Service Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -559,12 +553,10 @@ namespace _1CCC
 
                 metroProgressSpinner2.Invoke(new Action(() => metroProgressSpinner2.Spinning = false));
                 metroLabel8.Invoke(new Action(() => metroLabel8.Text = "Данные получены"));
-
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Произошла ошибка. Обратитесь к системному администратору.\nРасшифровка:\n" + ex, "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Произошла ошибка. Обратитесь к системному администратору.\nРасшифровка:\n" + ex, "1C Service Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -616,6 +608,9 @@ namespace _1CCC
 
             if (File.Exists(rcp + "/DoNotCopy.txt"))
                 File.Delete(rcp + "/DoNotCopy.txt");
+
+            if (File.Exists(rcp + "/1Cv8.cdn"))
+                File.Delete(rcp + "/1Cv8.cdn");
         }
 
         private void Copy(string begin_dir, string end_dir)
@@ -696,7 +691,7 @@ namespace _1CCC
 
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Резервное копирование завершено!", "1C Cache Cleaner", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Резервное копирование завершено!", "1C Service Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
             metroLabel9.Visible = false;
             metroProgressSpinner3.Visible = false;
         }
@@ -704,8 +699,10 @@ namespace _1CCC
         private void metroButton11_Click(object sender, EventArgs e)
         {
             ChangeColor cc = new ChangeColor();
+            this.Hide();
             cc.ShowDialog();
             DefineDesign();
+            this.Show();
             this.Refresh();
         }
     }
