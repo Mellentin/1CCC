@@ -26,7 +26,6 @@
     <SupportUrl>https://vk.com/mellentin</SupportUrl>
     <ProductName>1C Cache Cleaner</ProductName>
     <PublisherName>Дмитрий Пуршев</PublisherName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
