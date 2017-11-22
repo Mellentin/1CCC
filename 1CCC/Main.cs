@@ -358,7 +358,7 @@ namespace _1CCC
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1С Cache Cleaner, версия 1.0.0.4.\nДанная программа была разработана Дмитрием Пуршевым для удобства обслуживания программы \"1С Предприятие\".\nДанный программный продукт подпадает под категорию свободного программного обеспечения (Free Software). Дизассемблирование, а также другие формы получения исходного кода разрешены (лицензия GNU GPL).\n© Дмитрий Пуршев, " + DateTime.Now.Year.ToString() + "\nВсе права защищены®", "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("1С Service Manager, версия 1.0.0.5.\nДанная программа была разработана Дмитрием Пуршевым для удобства обслуживания программы \"1С Предприятие\".\nДанный программный продукт подпадает под категорию свободного программного обеспечения (Free Software). Дизассемблирование, а также другие формы получения исходного кода разрешены (лицензия GNU GPL).\n© Дмитрий Пуршев, " + DateTime.Now.Year.ToString() + "\nВсе права защищены®", "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void metroButton3_Click(object sender, EventArgs e)
