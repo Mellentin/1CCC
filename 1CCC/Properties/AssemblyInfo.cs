@@ -1,15 +1,16 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("1CCC")]
-[assembly: AssemblyDescription("1C Cache Cleaner - программа для очистки кэша 1С")]
+[assembly: AssemblyTitle("1CSM")]
+[assembly: AssemblyDescription("1C Service Manager - программа для сервисного обслуживания информационных баз и программных продуктов 1С")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Дмитрий Пуршев")]
-[assembly: AssemblyProduct("1CCC")]
+[assembly: AssemblyCompany("Внедренческий Центр Раздолье")]
+[assembly: AssemblyProduct("1CSM")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -34,3 +35,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("ru")]
+

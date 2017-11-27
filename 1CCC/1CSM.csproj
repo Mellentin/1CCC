@@ -24,13 +24,12 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://1ccc.mellentin.ru/</InstallUrl>
     <SupportUrl>https://vk.com/mellentin</SupportUrl>
-    <ProductName>1C Cache Cleaner</ProductName>
-    <PublisherName>Дмитрий Пуршев</PublisherName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <ProductName>1C Service Manager</ProductName>
+    <PublisherName>Внедренческий Центр Раздолье</PublisherName>
     <WebPage>index.html</WebPage>
     <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
+    <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -73,6 +72,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>1CCC_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
